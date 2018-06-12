@@ -26,6 +26,15 @@ userController.createUser = (req, res) => {
         }).catch(logError);
 };
 
+userController.updateUser = (req, res) => {
+    var id = req.params['id'];
+    var updatedUser = req.body;
+    User.findByIdAndUpdate(id, updatedUser)
+        .then(user => {
+            res.json(user);
+        }).catch(logError);
+};
+
 function logError(err) {
     console.log(err);
 }

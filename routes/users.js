@@ -14,4 +14,8 @@ router.post('/', (req, res) => {
     userController.createUser(req, res);
 });
 
+router.put('/:id', (req, res) => {
+    userController.updateUser(req, res);
+});
+
 module.exports = router;
