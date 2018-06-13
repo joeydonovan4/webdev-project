@@ -18,4 +18,8 @@ router.put('/:id', (req, res) => {
     userController.updateUser(req, res);
 });
 
+router.get('/:id/favorites/artists', (req, res) => {
+    userController.findFavoriteArtists(req, res);
+});
+
 module.exports = router;

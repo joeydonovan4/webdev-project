@@ -35,6 +35,14 @@ userController.updateUser = (req, res) => {
         }).catch(logError);
 };
 
+userController.findFavoriteArtists = (req, res) => {
+    var id = req.params['id'];
+    User.findById(id, 'favoriteArtists')
+        .then(artists => {
+            res.json(artists);
+        }).catch(logError);
+};
+
 function logError(err) {
     console.log(err);
 }
