@@ -9,9 +9,10 @@ const userSchema = mongoose.Schema({
         lastName: String
     },
     email: { type: String, required: true},
-    picture: Buffer,
-    created_at: {type: Date, default: Date.now},
-    updated_at: {type: Date, default: Date.now }
+    picture: Buffer
+},
+{
+    timestamps: true
 });
 
 var User = mongoose.model('User', userSchema);
