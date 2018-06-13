@@ -9,7 +9,11 @@ const userSchema = mongoose.Schema({
         lastName: String
     },
     email: { type: String, required: true},
-    picture: Buffer
+    picture: Buffer,
+    favoriteArtists: [Number],
+    favoritePublications: [Number],
+    favoriteExhibitions: [Number],
+    favoriteGalleries: [Number]
 },
 {
     timestamps: true
