@@ -35,7 +35,7 @@ app.use(session({
 }));
 
 var users = require('./routes/users');
-app.use('/users', users);
+app.use('/api/users', users);
 
 app.listen(4000, () => {
     console.log('Server is up and running on port 4000');
