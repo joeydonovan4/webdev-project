@@ -59,6 +59,14 @@ userController.findFavoriteExhibitions = (req, res) => {
         }).catch(logError);
 };
 
+userController.findFavoriteGalleries = (req, res) => {
+    var id = req.params['id'];
+    User.findById(id, 'favoriteGalleries')
+        .then(galleries => {
+            res.json(galleries);
+        }).catch(logError);
+};
+
 function logError(err) {
     console.log(err);
 }
