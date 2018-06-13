@@ -26,4 +26,8 @@ router.get('/:id/favorites/publications', (req, res) => {
     userController.findFavoritePublications(req, res);
 });
 
+router.get('/:id/favorites/exhibitions', (req, res) => {
+    userController.findFavoriteExhibitions(req, res);
+});
+
 module.exports = router;
