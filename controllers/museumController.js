@@ -5,8 +5,20 @@ var fetch = require('node-fetch');
 var museumController = {};
 
 museumController.findRecordsForType = (req, res) => {
-    var resourceType = req.params['resource-type'];
-    fetch(HOST + '/' + resourceType + '?' + API_KEY_PARAM)
+    var resourceType = req.params['resourceType'];
+    var uri = '';
+    if (resourceType === 'object') {
+        uri = objectURI(req.query.q);
+    } else if (resourceType === 'person') {
+        uri = personURI(req.query.q);
+    } else if (resourceType === 'publication') {
+        uri = publicationURI(req.query.q);
+    } else if (resourceType === 'exhibition') {
+        uri = exhibitionURI(req.query.q);
+    } else {
+        uri = galleryURI(req.query.q);
+    }
+    fetch(uri + '&' + API_KEY_PARAM)
         .then(handleErrors)
         .then(resources => {
             res.send(resources);
@@ -15,6 +27,26 @@ museumController.findRecordsForType = (req, res) => {
             console.log(error);
         });
 };
+
+function objectURI(keyword) {
+    return HOST + '/object?keyword=' + keyword;
+}
+
+function personURI(name) {
+    return HOST + '/person?q=displayname:' + name;
+}
+
+function publicationURI(title) {
+    return HOST + '/publication?q=title:' + title;
+}
+
+function exhibitionURI(title) {
+    return HOST + '/exhibition?q=title:' + title;
+}
+
+function galleryURI(name) {
+    return HOST + '/gallery?q=name:' + name;
+}
 
 function handleErrors(response) {
     if (!response.ok) {
