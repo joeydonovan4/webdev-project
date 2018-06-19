@@ -43,6 +43,4 @@ app.use('/api/users', users);
 var museum = require('./routes/museum');
 app.use('/api/museum', museum);
 
-app.listen(4000, () => {
-    console.log('Server is up and running on port 4000');
-});
+app.listen(process.env.PORT || 5000)
