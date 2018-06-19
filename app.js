@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 // Set up default mongoose connection
-mongoose.connect('mongodb://localhost/webdev-project', (err) => {
+mongoose.connect(process.env.MONGODB_URI, (err) => {
     if (err) throw err;
     console.log('Successfully connected');
 });
