@@ -28,6 +28,15 @@ sessionController.login = (req, res) => {
 sessionController.logout = (req, res) => {
     if (req.session) {
         req.session.destroy();
+        res.sendStatus(200);
+    }
+};
+
+sessionController.getCurrentUser = (req, res) => {
+    if (req.session['user']) {
+        res.send(req.session['user']);
+    } else {
+        res.sendStatus(401);
     }
 };
 
