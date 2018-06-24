@@ -12,6 +12,7 @@ const userSchema = mongoose.Schema({
     },
     email: { type: String, required: true},
     picture: Buffer,
+    favoriteObjects: [Number],
     favoriteArtists: [Number],
     favoritePublications: [Number],
     favoriteExhibitions: [Number],
