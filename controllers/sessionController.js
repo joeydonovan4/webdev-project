@@ -15,7 +15,7 @@ sessionController.login = (req, res) => {
                 if (err) console.log(err);
                 if (isMatch) {
                     req.session['user'] = user;
-                    res.send({id: user._id, username: user.username, name: user.name});
+                    res.send(user);
                 } else {
                     res.status(404)
                         .send({error: 'Incorrect password'});
